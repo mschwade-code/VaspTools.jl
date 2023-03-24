@@ -1,0 +1,4 @@
+name = "VaspTools"
+uuid = "c8ffe67e-a47f-49bc-b97c-c29ee461a3c6"
+authors = ["martin <ga63loc@mytum.de>"]
+version = "0.1.0"
