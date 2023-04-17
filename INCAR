@@ -1,0 +1,31 @@
+!GaAs
+ ENCUT = 300             !cutoff energy for plane waves
+ EDIFF = 1e-5            !energy difference for electronic convergence
+ NELMIN = 4              !minimum number of steps in electronic optimization
+ NELM = 60               !maximum number of steps in electronic optimization
+ ISMEAR = 0              !gaussian smearing
+ SIGMA = 0.01            !std for gaussian smearing
+ ISTART = 0              !calculation is started from scratch
+ GGA = PE                !use PBE xc-functional (default)
+
+!Parallelization
+ NCORE = 12              !number of cores per orbital
+
+!MD settings
+ TEBEG = 100             !initial temperature in K
+ TEEND = 100             !final temperature in K (default =TEBEG)
+ NSW = 8000              !maximum number of ionic steps
+ POTIM = 8               !MD time step in fs
+ IBRION = 0              !update ion positions, 0 => molecular dynamics
+ SMASS = 4               !controls velocities during MD, 4 => canonic ensemble with Nose algorithm
+ ISIF = 2                !calculate stress tensor, 2 => only ion positions are allowed to change
+ ISYM = 0                !switches off the use of symmetry
+ LREAL = Auto            !automatic optimization of projection operators, real space
+ LPLANE = True           !plane-wise data distribution in real space (false causes crash)
+
+!Output
+ LWAVE = False           !wavecar is not written
+ LCHARG = False          !chargecar is not written
+
+!TheoFEM standard
+ LSCALAPACK = .FALSE.    !avoids weird errors
