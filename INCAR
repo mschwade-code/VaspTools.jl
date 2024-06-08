@@ -19,7 +19,7 @@
  IBRION = 0              !update ion positions, 0 => molecular dynamics
  SMASS = 4               !controls velocities during MD, 4 => canonic ensemble with Nose algorithm
  ISIF = 2                !calculate stress tensor, 2 => only ion positions are allowed to change
- ISYM = 0                !switches off the use of symmetry
+ ISYM = 10               !switches off the use of symmetry
  LREAL = Auto            !automatic optimization of projection operators, real space
  LPLANE = True           !plane-wise data distribution in real space (false causes crash)
 
