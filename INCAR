@@ -1,5 +1,5 @@
 !GaAs
- ENCUT = 300             !cutoff energy for plane waves
+ ENCUT = 350             !cutoff energy for plane waves
  EDIFF = 1e-5            !energy difference for electronic convergence
  NELMIN = 4              !minimum number of steps in electronic optimization
  NELM = 60               !maximum number of steps in electronic optimization
@@ -19,7 +19,7 @@
  IBRION = 0              !update ion positions, 0 => molecular dynamics
  SMASS = 4               !controls velocities during MD, 4 => canonic ensemble with Nose algorithm
  ISIF = 2                !calculate stress tensor, 2 => only ion positions are allowed to change
- ISYM = 10               !switches off the use of symmetry
+ ISYM = 0                !switches off symmetry (exept k=-k)
  LREAL = Auto            !automatic optimization of projection operators, real space
  LPLANE = True           !plane-wise data distribution in real space (false causes crash)
 
