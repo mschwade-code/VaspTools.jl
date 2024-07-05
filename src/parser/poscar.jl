@@ -86,7 +86,7 @@ function write_poscar(poscar::Poscar; system_name="unknown_system")
     for i in 1:3
         sp1 = poscar.lattice[1, i] ≥ 0 ? " " : ""
         sps = [poscar.lattice[k, i] ≥ 0 ? "   " : "  " for k in 2:3]
-        println(file, sp1, poscar.lattice[1, i], sps[1], poscar.lattice[2, i], sps[2], poscar.lattice[3, i])
+        println(file, sp1, poscar.lattice[i, 1], sps[1], poscar.lattice[i, 2], sps[2], poscar.lattice[i, 3])
     end
     print(file, "  ")
     for type in poscar.atom_names; print(file, type); print(file, "  "); end
@@ -95,8 +95,8 @@ function write_poscar(poscar::Poscar; system_name="unknown_system")
     for number in poscar.atom_numbers; print(file, number); print(file, "  "); end
     print(file, "\n")
     println(file, "Direct")
-    for i in axes(poscar.Rs, 2)
-        pos = poscar.Rs[:, i]
+    for i in axes(poscar.rs_atom, 2)
+        pos = poscar.rs_atom[:, i]
         sp1 = pos[1] > 0 ? " " : ""
         sps = [pos[i] > 0 ? "   " : "  " for i in 2:3]
         println(file, sp1, pos[1], sps[1], pos[2], sps[2], pos[3], "   ", poscar.atom_types[i])
