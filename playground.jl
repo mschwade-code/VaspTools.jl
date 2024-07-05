@@ -12,6 +12,12 @@ blocks
 
 kp, Es, occs = read_eigenval("test/test_files/EIGENVAL_gaas")
 
+dos, meta = read_doscar("test/test_files/DOSCAR_gaas")
+
+VaspTools.write_to_file(kp, "_gaas_correct")
+
+Es == VaspTools.read_from_file("Es_correct.dat")
+
 @show occs[:, 1]
 
 band_plot = plot(title="Band Structure", xlabel="k-point index", ylabel="Energy (eV)", legend=false)
