@@ -12,9 +12,11 @@ blocks
 
 kp, Es, occs = read_eigenval("test/test_files/EIGENVAL_gaas")
 
-dos, meta = read_doscar("test/test_files/DOSCAR_gaas")
+poscar = read_xdatcar("test/test_files/POSCAR_gaas")
 
-VaspTools.write_to_file(kp, "_gaas_correct")
+@show poscar.Rs
+
+write_to_file(dos, "test/test_files/dos_mapbi3_correct")
 
 Es == VaspTools.read_from_file("Es_correct.dat")
 

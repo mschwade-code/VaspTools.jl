@@ -4,16 +4,31 @@
 
 ## Parsing
 
+### Atomic configurations
+
+Read the POSCAR input file from VASP.
+
+```julia
+poscar_path = "path/to/POSCAR"
+
+poscar = read_poscar(poscar_path)
+```
+
+One can also read the atomic configuration from an MD run from the XDATCAR file.
+
+```julia
+
+xdatcar_path = "path/to/XDATCAR"
+xdatcar = read_xdatcar(xdatcar_path)
+
+```
+
 ### DFT Eigenvalues
 
 Here's an example of how to read the EIGENVAL file from a VASP calculation and extract the k-points, energy bands and occupancies:
 
 ```julia
-using VaspTools
-
-# Define the path to the EIGENVAL file
 eigenval_path = "path/to/EIGENVAL"
-
 # Read the EIGENVAL file
 kpoints, E_bands, occs = read_eigenval(eigenval_path)
 ```
