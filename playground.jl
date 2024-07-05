@@ -1,5 +1,8 @@
 using VaspTools, BenchmarkTools, Plots
 
+
+
+
 @time blocks = read_incar("test/test_files/INCAR")
 
 blocks
