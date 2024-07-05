@@ -12,11 +12,9 @@ blocks
 
 kp, Es, occs = read_eigenval("test/test_files/EIGENVAL_gaas")
 
-poscar = read_xdatcar("test/test_files/POSCAR_gaas")
-
-@show poscar.Rs
-
-write_to_file(dos, "test/test_files/dos_mapbi3_correct")
+xdatcar = read_xdatcar("test/test_files/XDATCAR_gaas")
+@show xdatcar.lattice
+write_to_file(xdatcar.configs, "test/test_files/configs_gaas_correct")
 
 Es == VaspTools.read_from_file("Es_correct.dat")
 

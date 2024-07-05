@@ -1,7 +1,13 @@
 """
-    open_and_read(file)
+    open_and_read(file::AbstractString) -> Vector{String}
 
-Read all lines in file.
+Open a file, read all lines, and return them as a vector of strings.
+
+# Arguments
+- `file::AbstractString`: The path to the file to be read.
+
+# Returns
+- `lines::Vector{String}`: A vector where each element is a line from the file.
 """
 function open_and_read(file)
     f = open(file)
@@ -11,18 +17,25 @@ function open_and_read(file)
 end
 
 """
-    split_lines(lines)
+    split_lines(lines::Vector{String}) -> Vector{Vector{String}}
 
-Split each line in lines into individual elements at spaces.
+Split each line of the input vector of strings into its constituent non-empty elements.
+
+# Arguments
+- `lines::Vector{String}`: A vector of strings, where each string represents a line to be split.
+
+# Returns
+- `split_lines::Vector{Vector{String}}`: A vector of vectors of strings, where each inner vector 
+contains the non-empty elements of the corresponding line from the input.
 """
 function split_lines(lines)
-    split_lines = Vector{String}[]
-    for line in lines
+    split_lines = Vector{Vector{String}}(undef, length(lines))
+    Threads.@threads for l in eachindex(lines)
         split_elements = String[]
-        for element in split(line, " ")
+        @views for element in split(lines[l], " ")
             if element ≠ ""; push!(split_elements, element); end
         end
-        push!(split_lines, split_elements)
+        split_lines[l] = split_elements
     end
     return split_lines
 end
