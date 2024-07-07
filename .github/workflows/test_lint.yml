@@ -1,0 +1,25 @@
+name: Run Tests
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        julia-version: ["1.9.3"]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.julia-version }}
+      uses: julia-actions/setup-julia@v1
+      with:
+        julia-version: ${{ matrix.julia-version }}
+        arch: x64
+    - name: Install dependencies
+      run: |
+          julia --project=. -e '
+            import Pkg
+            Pkg.instantiate()'
+    - name: Run tests
+      run: |
+        julia --project=. test/run_tests.jl
