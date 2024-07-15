@@ -164,7 +164,7 @@ end
 
 Sets the `keyword` to `value` in `blocks` with `comment`.
 """
-function set_keyword!(keyword::String, value::String, blocks::OrderedDict{String, Vector{IncarLine}}; comment="", block_label="")
+function set_keyword!(keyword::AbstractString, value::AbstractString, blocks::OrderedDict{String, Vector{IncarLine}}; comment="", block_label="")
     value_set = false
     if haskey(blocks, block_label)
         block_lines = blocks[block_label]
