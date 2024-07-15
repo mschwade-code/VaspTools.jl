@@ -102,6 +102,7 @@ function read_incar(file::String)
         end
         blocks[block_labels[i]] = incar_lines
     end
+    check_for_empty_blocks!(blocks)
     return blocks
 end
 
@@ -122,6 +123,40 @@ function write_incar(blocks::OrderedDict, filename="INCAR")
         if k ≠ length(blocks); println(file, ""); end
     end
     close(file)
+end
+
+"""
+    check_for_empty_blocks!(blocks)
+"""
+function check_for_empty_blocks!(blocks)
+    for (block_label, block_lines) in blocks
+        if length(block_lines) == 0
+            delete!(blocks, block_label)
+        end
+    end
+end
+
+"""
+    get_value_for_keyword(keyword, blocks, block_label)
+"""
+function get_value_for_keyword(keyword, blocks; block_label="")
+    if haskey(blocks, block_label)
+        block_lines = blocks[block_label]
+        for line in block_lines
+            if line.keyword == keyword
+                return line.value
+            end
+        end
+    else
+        for (block_label, block_lines) in blocks
+            for line in block_lines
+                if line.keyword == keyword
+                    return line.value
+                end
+            end
+        end
+    end
+    throw("Value not found!")
 end
 
 """
@@ -158,3 +193,4 @@ function set_keyword!(keyword::String, value::String, blocks::OrderedDict{String
         end
     end
 end
+

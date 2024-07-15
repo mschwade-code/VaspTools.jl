@@ -1,0 +1,16 @@
+!GaAs
+ ENCUT = 250             !cutoff energy for plane waves
+ EDIFF = 1e-5            !energy difference for electronic convergence
+ ISMEAR = -5             !tetrahedron method for interpolation
+ ISTART = 0              !calculation is started from scratch
+	
+!Parallelization
+ NCORE = 2               !number of cores per orbital
+ KPAR = 4                !number of kpoints to be treated in parallel
+
+!Output
+ LWAVE = .False.         !wavecar is not written
+ LCHARG = .True.         !chargecar is written
+
+!TheoFEM standard
+ LSCALAPACK = .FALSE.    !avoids weird errors

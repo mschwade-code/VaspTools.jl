@@ -1,5 +1,5 @@
 !GaAs
- ENCUT = 350             !cutoff energy for plane waves
+ ENCUT = 400             !cutoff energy for plane waves
  EDIFF = 1e-5            !energy difference for electronic convergence
  NELMIN = 4              !minimum number of steps in electronic optimization
  NELM = 60               !maximum number of steps in electronic optimization
